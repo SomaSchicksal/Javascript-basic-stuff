@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <body> 
+    <canvas id="myCanvas" width="200px" height="200px" style="border: 1px solid #000">
+     
+    </canvas>
+    <script>
+     const canvas= document.getElementById("myCanvas");
+     const context= canvas.getContext("2d");
+     let x=50;
+     let y=50;
+     
+     context.beginPath();
+     context.arc(100,100,25,0,2*Math.PI); //context.arc draws a circle, a curved line specifically
+     context.stroke();
+     context.fill(); // it fills the object drawed
+    // we now want to add more circles, to do so instead of copy paste well use a function
+    function blob(xloc, yloc, size, color) {
+     context.clearRect(0,0,canvas.width, canvas.height); // it removes the dragging animation while the ball moves
+     context.beginPath();
+     context.arc(x,y,size,0,2*Math.PI); //context.arc draws a circle, a curved line specifically
+     context.fillStyle=color;
+     context.stroke();
+     context.fill();
+     x++;
+     y++;
+    }
+    //now i will call that function, with the parameters of the circle
+    blob(50,50,30,"green");
+    blob(10,80,40,"blue");
+    // now we want to animate the balls, so we use the set interval function that takes 2 parameters: the first is the function we want to move, and the millisecond between the runs
+    
+    setInterval(function(){
+blob(x, y, 20, "green");
+}, 300);
+
+    </script>
+
+
+  </body>
+
+
+</html>
