@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+ <head> 
+   <title> Practical javascript</title> 
+</head>
+
+<body>
+ <script>
+ 
+  var todoList= {
+   todos: [],
+   displayTodos: function () {
+    console.log("My todos:");
+    for (var i=0; i<this.todos.length; i++)  {
+    console.log(this.todos[i].todoText);
+    } // i needs to be less than our arrays length (3) and our array is represented by this.todos
+  },  
+   add: function (initialTodoText) {
+    this.todos.push({
+      todoText: initialTodoText, //Addtodo now adds an object with 2 properties.The first todoText is the property, that remains unchanged, the second one is the value that we put as parameter of the function, whatever we type when we call the function will be the value of todoText.
+      completed: false,
+    });
+    this.displayTodos();
+  },
+   edit: function (position, todoText) {
+    this.todos[position].todoText= todoText;
+    this.displayTodos();
+  },
+   remove: function (position) {
+    this.todos.splice(position,1); // it takes 2 parameters, one is the position of the element we want to delete and the other is the number of element to delete
+    this.displayTodos();
+  },
+   toggleCompleted: function (position) {
+    var todo= this.todos[position];
+    todo.completed= !todo.completed; // the ! at the beginning inverst its value (from false to true)
+    this.displayTodos();
+  }
+};
+  // we now want to create a more complex object with a set amount of properties
+  // we will then work on for loops: for(inizialisation, condition, final-expression)
+  for(var i=0; i<3; i++) {
+    console.log("hey");  //THIS IS HOW I WOULD ASK A COMPUTER TO DO SOMETHING 3 TIMES
+  } 
+    // we start from zero, as long as i is less than 3 the code will repeat and add 1 to my variable i
+// now we need a new function to toggle our todos
+function toggle(position) {
+  
+}
+  
+  </script>
+</body>
+
+</html>
